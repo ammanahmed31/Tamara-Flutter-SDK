@@ -4,7 +4,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import '../../tamara_sdk_flutter.dart';
 
 
-typedef TamaraCheckoutCompletion = void Function(WebViewResult resultCode);
+typedef TamaraCheckoutCompletion = void Function(TamaraWebViewResult resultCode);
 
 final options = InAppWebViewGroupOptions(
   crossPlatform: InAppWebViewOptions(
