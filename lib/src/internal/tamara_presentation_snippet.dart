@@ -7,8 +7,8 @@ import '../models/enums.dart';
 import 'fixtures.dart';
 import 'utils.dart';
 
-class TabbyPresentationSnippet extends StatelessWidget {
-  TabbyPresentationSnippet({
+class TamaraPresentationSnippet extends StatelessWidget {
+  TamaraPresentationSnippet({
     required this.price,
     required this.currency,
     required this.lang,
@@ -27,9 +27,10 @@ class TabbyPresentationSnippet extends StatelessWidget {
 
   void openWebBrowser() {
     browser.open(
-      url: WebUri(
-        '${snippetWebUrls[lang]}?price=$price&currency=${currency.displayName}',
-      ),
+      url: Uri.parse(
+        'https://pay.tabby.ai/checkout?amount=$price&currency=$currency&lang=${lang == Lang.ar ? 'ar' : 'en'}',
+      ),  
+     
       options: ChromeSafariBrowserClassOptions(
         android: AndroidChromeCustomTabsOptions(shareState: CustomTabsShareState.SHARE_STATE_OFF),
         ios: IOSSafariOptions(

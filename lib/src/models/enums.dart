@@ -24,6 +24,17 @@ extension CurrencyExt on Currency {
   }
 }
 
+extension LangExt on Lang {
+  String get displayName {
+    switch (this) {
+      case Lang.en:
+        return 'en_US';
+      case Lang.ar:
+        return 'ar_SA';
+    }
+  }
+}
+
 extension CountryExt on CountryCode {
   String get displayName {
     switch (this) {
