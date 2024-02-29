@@ -17,8 +17,8 @@ class TamaraPresentationSnippet extends StatelessWidget {
     Key? key,
   }) : super(key: key);
   final String price;
-  final Currency currency;
-  final Lang lang;
+  final TamaraCurrency currency;
+  final TamaraLang lang;
   final Color borderColor;
   final Color backgroundColor;
   final Color textColor;
@@ -27,7 +27,7 @@ class TamaraPresentationSnippet extends StatelessWidget {
   void openWebBrowser() {
     browser.open(
       url: Uri.parse(
-        'https://pay.tabby.ai/checkout?amount=$price&currency=$currency&lang=${lang == Lang.ar ? 'ar' : 'en'}',
+        'https://pay.tabby.ai/checkout?amount=$price&currency=$currency&lang=${lang == TamaraLang.ar ? 'ar' : 'en'}',
       ),  
      
       options: ChromeSafariBrowserClassOptions(
@@ -63,7 +63,7 @@ class TamaraPresentationSnippet extends StatelessWidget {
                   text: localStrings[0],
                   style: TextStyle(
                     color: textColor,
-                    fontFamily: lang == Lang.ar ? 'Arial' : 'Inter',
+                    fontFamily: lang == TamaraLang.ar ? 'Arial' : 'Inter',
                     fontSize: 15,
                     height: 1.5,
                   ),

@@ -8,7 +8,7 @@ final defaultMerchantUrls = MerchantUrl(
   notification: 'https://checkout.tabby.ai/notification.html',
 );
 
-final snippetWebUrls = <Lang, String>{
-  Lang.en: 'https://cdn-sandbox.tamara.co/widget-v2/tamara-widget.html?lang=en_US&inline_type=2',
-  Lang.ar: 'https://cdn-sandbox.tamara.co/widget-v2/tamara-widget.html?lang=ar_SA&inline_type=1',
+final snippetWebUrls = <TamaraLang, String>{
+  TamaraLang.en: 'https://cdn-sandbox.tamara.co/widget-v2/tamara-widget.html?lang=en_US&inline_type=2',
+  TamaraLang.ar: 'https://cdn-sandbox.tamara.co/widget-v2/tamara-widget.html?lang=ar_SA&inline_type=1',
 };

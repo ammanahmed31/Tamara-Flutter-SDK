@@ -48,7 +48,7 @@ class TamaraCheckoutPayload {
 
 class Amount {
   final double value;
-  final Currency currency;
+  final TamaraCurrency currency;
 
   Amount({
     required this.value,

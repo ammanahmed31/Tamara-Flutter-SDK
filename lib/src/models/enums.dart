@@ -1,35 +1,35 @@
-enum Lang { en, ar }
+enum TamaraLang { en, ar }
 
-enum Currency { aed, sar }
+enum TamaraCurrency { aed, sar }
 
 enum CountryCode { sa, ae }
 
-extension CurrencyExt on Currency {
+extension CurrencyExt on TamaraCurrency {
   String get displayName {
     switch (this) {
-      case Currency.aed:
+      case TamaraCurrency.aed:
         return 'AED';
-      case Currency.sar:
+      case TamaraCurrency.sar:
         return 'SAR';
     }
   }
 
   int get decimals {
     switch (this) {
-      case Currency.aed:
+      case TamaraCurrency.aed:
         return 2;
-      case Currency.sar:
+      case TamaraCurrency.sar:
         return 2;
     }
   }
 }
 
-extension LangExt on Lang {
+extension LangExt on TamaraLang {
   String get displayName {
     switch (this) {
-      case Lang.en:
+      case TamaraLang.en:
         return 'en_US';
-      case Lang.ar:
+      case TamaraLang.ar:
         return 'ar_SA';
     }
   }
