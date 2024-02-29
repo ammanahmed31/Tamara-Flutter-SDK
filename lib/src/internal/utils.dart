@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 import '../../tamara_sdk_flutter.dart';
-import 'tabby_web_view.dart';
+import 'tamara_web_view.dart';
 
 IOSNavigationResponseAction iosNavigationResponseHandler({
   required TamaraCheckoutCompletion onResult,

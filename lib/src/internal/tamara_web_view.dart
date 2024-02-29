@@ -3,7 +3,6 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 import '../../tamara_sdk_flutter.dart';
 
-const tabbyColor = Color.fromRGBO(221, 196, 146, 1);
 
 typedef TamaraCheckoutCompletion = void Function(WebViewResult resultCode);
 
@@ -63,7 +62,7 @@ class _TamaraWebViewState extends State<TamaraWebView> {
         if (_progress < 1) ...[
           LinearProgressIndicator(
             value: _progress,
-            color: tabbyColor,
+            color: const Color.fromRGBO(221, 196, 146, 1),
             backgroundColor: Colors.white,
           )
         ],
