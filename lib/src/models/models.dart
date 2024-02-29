@@ -10,7 +10,7 @@ class TamaraCheckoutPayload {
   final Amount taxAmount; // The total amount of the tax.
   final Amount shippingAmount; // The total amount of the shipping.
   final MerchantUrl merchantUrls; // The merchant urls for the checkout page.
-  final ShippingAddress shippingAddress; // The shipping address of the order.
+  final TamaraShippingAddress shippingAddress; // The shipping address of the order.
   final Consumer consumer; // The consumer information.
   final List<TamaraItem> items; // The items of the order.
 
@@ -84,7 +84,7 @@ class MerchantUrl {
       };
 }
 
-class ShippingAddress {
+class TamaraShippingAddress {
   String firstName;
   String lastName;
   String line1;
@@ -95,7 +95,7 @@ class ShippingAddress {
   String countryCode;
   String? phoneNumber;
 
-  ShippingAddress({
+  TamaraShippingAddress({
     required this.firstName,
     required this.lastName,
     required this.line1,
