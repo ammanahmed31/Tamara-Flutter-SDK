@@ -184,19 +184,19 @@ class TamaraItem {
 }
 
 class TamaraSession {
-  String orderId;
-  String checkoutId;
-  String checkoutUrl;
-  String status;
+  String? orderId;
+  String? checkoutId;
+  String? checkoutUrl;
+  String? status;
 
   TamaraSession({required this.orderId, required this.checkoutId, required this.checkoutUrl, required this.status});
 
   factory TamaraSession.fromJson(Map<String, dynamic> json) {
     return TamaraSession(
-      orderId: json['order_id'],
-      checkoutId: json['checkout_id'],
-      checkoutUrl: json['checkout_url'],
-      status: json['status'],
+      orderId: json.containsKey('order_id') ? json['order_id'] : null,
+      checkoutId: json.containsKey('checkout_id') ? json['checkout_id'] : null,
+      checkoutUrl: json.containsKey('checkout_url') ? json['checkout_url'] : null,
+      status: json.containsKey('status') ? json['status'] : null,
     );
   }
 
