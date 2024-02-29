@@ -108,7 +108,7 @@ extension EnvironmentExt on Environment {
   }
 }
 
-enum WebViewResult {
+enum TamaraWebViewResult {
   close,
   authorized,
   rejected,

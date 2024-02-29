@@ -11,15 +11,15 @@ IOSNavigationResponseAction iosNavigationResponseHandler({
   required String nextUrl,
 }) {
   if (nextUrl.contains(defaultMerchantUrls.cancel)) {
-    onResult(WebViewResult.close);
+    onResult(TamaraWebViewResult.close);
     return IOSNavigationResponseAction.CANCEL;
   }
   if (nextUrl.contains(defaultMerchantUrls.failure)) {
-    onResult(WebViewResult.rejected);
+    onResult(TamaraWebViewResult.rejected);
     return IOSNavigationResponseAction.CANCEL;
   }
   if (nextUrl.contains(defaultMerchantUrls.success)) {
-    onResult(WebViewResult.authorized);
+    onResult(TamaraWebViewResult.authorized);
     return IOSNavigationResponseAction.CANCEL;
   }
   return IOSNavigationResponseAction.ALLOW;
@@ -32,16 +32,16 @@ void javaScriptHandler(
   try {
     final List<dynamic> events = message.first;
     final msg = events.first as String;
-    final resultCode = WebViewResult.values.firstWhere(
+    final resultCode = TamaraWebViewResult.values.firstWhere(
       (value) => value.name == msg.toLowerCase(),
     );
     onResult(resultCode);
   } catch (e, s) {
-    printError(e, s);
+    printTamaraError(e, s);
   }
 }
 
-void printError(Object error, StackTrace stackTrace) {
+void printTamaraError(Object error, StackTrace stackTrace) {
   debugPrint('Exception: $error');
   debugPrint('StackTrace: $stackTrace');
 }
