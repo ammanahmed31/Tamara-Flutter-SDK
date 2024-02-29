@@ -12,7 +12,7 @@ class TamaraCheckoutPayload {
   final MerchantUrl merchantUrls; // The merchant urls for the checkout page.
   final ShippingAddress shippingAddress; // The shipping address of the order.
   final Consumer consumer; // The consumer information.
-  final List<Item> items; // The items of the order.
+  final List<TamaraItem> items; // The items of the order.
 
   TamaraCheckoutPayload({
     required this.orderReferenceId,
@@ -141,7 +141,7 @@ class Consumer {
       };
 }
 
-class Item {
+class TamaraItem {
   String referenceId;
   String type;
   String name;
@@ -154,7 +154,7 @@ class Item {
   Amount? taxAmount;
   Amount totalAmount;
 
-  Item({
+  TamaraItem({
     required this.referenceId,
     required this.type,
     required this.name,
