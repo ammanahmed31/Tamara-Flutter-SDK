@@ -1,8 +1,45 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-import '../models/enums.dart';
+import '../../tamara_sdk_flutter.dart';
+import 'tabby_web_view.dart';
+
+IOSNavigationResponseAction iosNavigationResponseHandler({
+  required TamaraCheckoutCompletion onResult,
+  required String nextUrl,
+}) {
+  if (nextUrl.contains(defaultMerchantUrls.cancel)) {
+    onResult(WebViewResult.close);
+    return IOSNavigationResponseAction.CANCEL;
+  }
+  if (nextUrl.contains(defaultMerchantUrls.failure)) {
+    onResult(WebViewResult.rejected);
+    return IOSNavigationResponseAction.CANCEL;
+  }
+  if (nextUrl.contains(defaultMerchantUrls.success)) {
+    onResult(WebViewResult.authorized);
+    return IOSNavigationResponseAction.CANCEL;
+  }
+  return IOSNavigationResponseAction.ALLOW;
+}
+
+void javaScriptHandler(
+  List<dynamic> message,
+  TamaraCheckoutCompletion onResult,
+) {
+  try {
+    final List<dynamic> events = message.first;
+    final msg = events.first as String;
+    final resultCode = WebViewResult.values.firstWhere(
+      (value) => value.name == msg.toLowerCase(),
+    );
+    onResult(resultCode);
+  } catch (e, s) {
+    printError(e, s);
+  }
+}
 
 void printError(Object error, StackTrace stackTrace) {
   debugPrint('Exception: $error');

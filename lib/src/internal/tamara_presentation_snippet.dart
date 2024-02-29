@@ -1,11 +1,7 @@
-// ignore_for_file: lines_longer_than_80_chars, deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 import '../../tamara_sdk_flutter.dart';
-import '../models/enums.dart';
-import 'utils.dart';
 
 class TamaraPresentationSnippet extends StatelessWidget {
   TamaraPresentationSnippet({
@@ -27,9 +23,7 @@ class TamaraPresentationSnippet extends StatelessWidget {
 
   void openWebBrowser() {
     browser.open(
-      url: Uri.parse(
-        '${lang == TamaraLang.ar ? snippetWebUrls[1] : snippetWebUrls[0]}?amount=$price&currency=$currency&lang=${lang.displayName}',
-      ),
+      url: Uri.parse('${snippetWebUrls[lang]}?amount=$price&currency=$currency&lang=${lang.displayName}'),
       options: ChromeSafariBrowserClassOptions(
         android: AndroidChromeCustomTabsOptions(shareState: CustomTabsShareState.SHARE_STATE_OFF),
         ios: IOSSafariOptions(
