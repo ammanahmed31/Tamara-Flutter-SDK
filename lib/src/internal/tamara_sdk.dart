@@ -55,6 +55,8 @@ class TamaraSDK implements TamaraWithRemoteDataSource {
 
   @override
   Future<TamaraSession> createSession(TamaraCheckoutPayload payload) async {
+    debugPrint('token: $apiKey');
+    debugPrint('payload: ${payload.toMap()}');
     checkSetup();
     try {
       final response = await http.post(
