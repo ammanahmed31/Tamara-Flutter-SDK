@@ -17,9 +17,13 @@ abstract class TamaraWithRemoteDataSource {
     TamaraEnvironment environment = TamaraEnvironment.production,
   });
 
+  /// Create a new session for the checkout.
+  /// Returns a [TamaraSession] object.
   /// Throws a [ServerException] for all error codes.
   Future<TamaraSession> createSession(TamaraCheckoutPayload payload);
 
+  /// Check if your order is eligible for Tamara installment plans.
+  /// Returns a [TamaraPaymentOptions] object.
   /// Throws a [ServerException] for all error codes.
   Future<TamaraPaymentOptions> checkAvailablePaymentOptions(TamaraPaymentOptionsPayload payload);
 }

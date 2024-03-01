@@ -239,8 +239,8 @@ class TamaraPaymentOptionsPayload {
   Map<String, dynamic> toJson() => {
         "country": country,
         "order_value": orderValue.toMap(),
-        "phone_number": phoneNumber,
-        "is_vip": isVip,
+        if (phoneNumber != null) "phone_number": phoneNumber,
+        if (isVip != null) "is_vip": isVip,
       };
 }
 
