@@ -1,5 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
@@ -30,6 +32,8 @@ void javaScriptHandler(
   TamaraCheckoutCompletion onResult,
 ) {
   try {
+    log('JavaScriptHandler: $message');
+    inspect(message);
     final List<dynamic> events = message.first;
     final msg = events.first as String;
     final resultCode = TamaraWebViewResult.values.firstWhere(
