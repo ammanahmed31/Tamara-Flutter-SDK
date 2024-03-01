@@ -19,6 +19,9 @@ abstract class TamaraWithRemoteDataSource {
 
   /// Throws a [ServerException] for all error codes.
   Future<TamaraSession> createSession(TamaraCheckoutPayload payload);
+
+  /// Throws a [ServerException] for all error codes.
+  Future<TamaraPaymentOptions> checkAvailablePaymentOptions(TamaraPaymentOptionsPayload payload);
 }
 
 class TamaraSDK implements TamaraWithRemoteDataSource {
@@ -78,6 +81,35 @@ class TamaraSDK implements TamaraWithRemoteDataSource {
       }
     } catch (e, s) {
       log('TamaraSDK.createSession', error: e, stackTrace: s);
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<TamaraPaymentOptions> checkAvailablePaymentOptions(TamaraPaymentOptionsPayload payload) async {
+    debugPrint('token: $apiKey');
+    debugPrint('payload: ${payload.toJson()}');
+    checkSetup();
+    try {
+      final response = await http.post(
+        Uri.parse('${host}checkout/payment-options-pre-check'),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $apiKey',
+        },
+        body: jsonEncode(payload.toJson()),
+      );
+      debugPrint('session create status: ${response.statusCode}');
+      if (response.statusCode == 200) {
+        final paymentOptions = TamaraPaymentOptions.fromJson(jsonDecode(response.body));
+        return paymentOptions;
+      } else {
+        debugPrint(response.body);
+        throw ServerException();
+      }
+    } catch (e, s) {
+      log('checkAvailablePaymentOptions error', error: e, stackTrace: s);
       throw ServerException();
     }
   }

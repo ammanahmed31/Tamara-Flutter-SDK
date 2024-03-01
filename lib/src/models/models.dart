@@ -61,6 +61,13 @@ class Amount {
       'currency': currency.displayName,
     };
   }
+
+  factory Amount.fromJson(dynamic json) {
+    return Amount(
+      value: json['amount'],
+      currency: TamaraCurrency.values.firstWhere((element) => element.displayName == json['currency']),
+    );
+  }
 }
 
 class MerchantUrl {
@@ -207,4 +214,73 @@ class TamaraSession {
 
   @override
   int get hashCode => orderId.hashCode ^ checkoutId.hashCode ^ checkoutUrl.hashCode ^ status.hashCode;
+}
+
+class TamaraPaymentOptionsPayload {
+  String country;
+  Amount orderValue;
+  String? phoneNumber;
+  bool? isVip;
+
+  TamaraPaymentOptionsPayload({
+    required this.country,
+    required this.orderValue,
+    this.phoneNumber,
+    this.isVip,
+  });
+
+  factory TamaraPaymentOptionsPayload.fromJson(Map<String, dynamic> json) => TamaraPaymentOptionsPayload(
+        country: json["country"],
+        orderValue: Amount.fromJson(json["order_value"]),
+        phoneNumber: json["phone_number"],
+        isVip: json["is_vip"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "country": country,
+        "order_value": orderValue.toMap(),
+        "phone_number": phoneNumber,
+        "is_vip": isVip,
+      };
+}
+
+class TamaraPaymentOptions {
+  bool? hasAvailablePaymentOptions;
+  bool? singleCheckoutEnabled;
+  List<AvailablePaymentLabel>? availablePaymentLabels;
+
+  TamaraPaymentOptions({
+    required this.hasAvailablePaymentOptions,
+    required this.singleCheckoutEnabled,
+    required this.availablePaymentLabels,
+  });
+
+  factory TamaraPaymentOptions.fromJson(Map<String, dynamic> json) => TamaraPaymentOptions(
+        hasAvailablePaymentOptions: json.containsKey('has_available_payment_options') ? json["has_available_payment_options"] : null,
+        singleCheckoutEnabled: json.containsKey('single_checkout_enabled') ? json["single_checkout_enabled"] : null,
+        availablePaymentLabels: (json.containsKey('available_payment_labels') && json['available_payment_labels'] != null && (json['available_payment_labels'] as List).isNotEmpty)
+            ? List<AvailablePaymentLabel>.from(json["available_payment_labels"].map((x) => AvailablePaymentLabel.fromJson(x)))
+            : null,
+      );
+}
+
+class AvailablePaymentLabel {
+  String paymentType;
+  int instalment;
+  String description;
+  String descriptionAr;
+
+  AvailablePaymentLabel({
+    required this.paymentType,
+    required this.instalment,
+    required this.description,
+    required this.descriptionAr,
+  });
+
+  factory AvailablePaymentLabel.fromJson(Map<String, dynamic> json) => AvailablePaymentLabel(
+        paymentType: json["payment_type"],
+        instalment: json["instalment"],
+        description: json["description"],
+        descriptionAr: json["description_ar"],
+      );
 }
