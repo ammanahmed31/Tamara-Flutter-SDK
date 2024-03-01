@@ -7,3 +7,4 @@ export './src/internal/utils.dart';
 export './src/internal/fixtures.dart';
 export './src/internal/tamara_sdk.dart';
 export './src/internal/tamara_presentation_snippet.dart';
+export './src/internal/tamara_web_view.dart';
