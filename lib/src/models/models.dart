@@ -278,9 +278,9 @@ class AvailablePaymentLabel {
   });
 
   factory AvailablePaymentLabel.fromJson(Map<String, dynamic> json) => AvailablePaymentLabel(
-        paymentType: json["payment_type"],
-        instalment: json["instalment"],
-        description: json["description"],
-        descriptionAr: json["description_ar"],
+        paymentType: json.containsKey('payment_type') ? json["payment_type"] ?? '' : '',
+        instalment: json.containsKey('instalment') ? json["instalment"] ?? '' : '',
+        description: json.containsKey('description') ? json["description"] ?? '' : '',
+        descriptionAr: json.containsKey('description_ar') ? json["description_ar"] ?? '' : '',
       );
 }
