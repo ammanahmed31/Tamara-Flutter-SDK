@@ -92,17 +92,17 @@ enum OrderHistoryItemPaymentMethod {
   cod,
 }
 
-enum Environment {
+enum TamaraEnvironment {
   stage,
   production,
 }
 
-extension EnvironmentExt on Environment {
+extension TamaraEnvironmentExt on TamaraEnvironment {
   String get host {
     switch (this) {
-      case Environment.stage:
+      case TamaraEnvironment.stage:
         return 'https://api-sandbox.tamara.co/';
-      case Environment.production:
+      case TamaraEnvironment.production:
         return 'https://api.tamara.co/';
     }
   }

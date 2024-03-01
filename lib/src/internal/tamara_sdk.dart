@@ -14,7 +14,7 @@ abstract class TamaraWithRemoteDataSource {
   /// Initialise Tamara API.
   void setup({
     required String withApiKey,
-    Environment environment = Environment.production,
+    TamaraEnvironment environment = TamaraEnvironment.production,
   });
 
   /// Throws a [ServerException] for all error codes.
@@ -36,7 +36,7 @@ class TamaraSDK implements TamaraWithRemoteDataSource {
   @override
   void setup({
     required String withApiKey,
-    Environment environment = Environment.production,
+    TamaraEnvironment environment = TamaraEnvironment.production,
   }) {
     if (withApiKey.isEmpty) {
       throw 'Tamara api key cannot be empty';
