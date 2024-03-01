@@ -57,7 +57,7 @@ class Amount {
 
   Map<String, dynamic> toMap() {
     return {
-      'value': value,
+      'amount': value,
       'currency': currency.displayName,
     };
   }
