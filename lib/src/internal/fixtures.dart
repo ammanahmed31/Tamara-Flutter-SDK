@@ -2,10 +2,10 @@ import '../models/enums.dart';
 import '../models/models.dart';
 
 final defaultMerchantUrls = MerchantUrl(
-  success: 'https://checkout.tabby.ai/success.html',
-  failure: 'https://checkout.tabby.ai/failure.html',
-  cancel: 'https://checkout.tabby.ai/cancel.html',
-  notification: 'https://checkout.tabby.ai/notification.html',
+  cancel: 'paymentStatus=canceled',
+  failure: 'paymentStatus=failed',
+  notification: 'paymentStatus=notification',
+  success: 'paymentStatus=success',
 );
 
 final snippetWebUrls = <TamaraLang, String>{
