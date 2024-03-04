@@ -9,6 +9,8 @@ final defaultMerchantUrls = MerchantUrl(
 );
 
 final snippetWebUrls = <TamaraLang, String>{
-  TamaraLang.en: 'https://cdn-sandbox.tamara.co/widget-v2/tamara-widget.html?lang=en_US&inline_type=2',
-  TamaraLang.ar: 'https://cdn-sandbox.tamara.co/widget-v2/tamara-widget.html?lang=ar_SA&inline_type=1',
+  TamaraLang.en:
+      'https://cdn.tamara.co/widget/tamara-introduction.html?colorType=default&showBorder=true&paymentType=installment&numberOfInstallments=3&disableInstallment=false&disablePaylater=true&widgetType=product-widget',
+  TamaraLang.ar:
+      'https://cdn.tamara.co/widget/tamara-introduction.html?colorType=default&showBorder=true&paymentType=installment&numberOfInstallments=3&disableInstallment=false&disablePaylater=true&widgetType=product-widget',
 };

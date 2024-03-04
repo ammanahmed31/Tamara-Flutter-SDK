@@ -23,7 +23,7 @@ class TamaraPresentationSnippet extends StatelessWidget {
 
   void openWebBrowser() {
     browser.open(
-      url: Uri.parse('${snippetWebUrls[lang]}?amount=$price&currency=$currency&lang=${lang.displayName}'),
+      url: Uri.parse('${snippetWebUrls[lang]}&price=$price&countryCode=SA&currency=$currency&lang=${lang == TamaraLang.ar ? 'ar' : 'en'}'),
       options: ChromeSafariBrowserClassOptions(
         android: AndroidChromeCustomTabsOptions(shareState: CustomTabsShareState.SHARE_STATE_OFF),
         ios: IOSSafariOptions(
