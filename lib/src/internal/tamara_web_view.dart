@@ -3,17 +3,11 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 import '../../tamara_sdk_flutter.dart';
 
-
 typedef TamaraCheckoutCompletion = void Function(TamaraWebViewResult resultCode);
 
 final options = InAppWebViewGroupOptions(
-  crossPlatform: InAppWebViewOptions(
-    incognito: true,
-  ),
-  ios: IOSInAppWebViewOptions(
-    applePayAPIEnabled: true,
-    useOnNavigationResponse: true,
-  ),
+  crossPlatform: InAppWebViewOptions(incognito: true),
+  ios: IOSInAppWebViewOptions(applePayAPIEnabled: true, useOnNavigationResponse: true),
 );
 
 class TamaraWebView extends StatefulWidget {
