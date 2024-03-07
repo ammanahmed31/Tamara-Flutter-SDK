@@ -37,8 +37,8 @@ class TamaraSDK implements TamaraWithRemoteDataSource {
 
   static final TamaraSDK _singleton = TamaraSDK._internal();
 
-  late final String apiKey;
-  late final String host;
+  String? apiKey;
+  String? host;
 
   @override
   void setup({
@@ -54,7 +54,7 @@ class TamaraSDK implements TamaraWithRemoteDataSource {
 
   void checkSetup() {
     try {
-      apiKey.isNotEmpty && host.isNotEmpty;
+      apiKey!.isNotEmpty && host!.isNotEmpty;
     } catch (e) {
       throw 'TamaraSDK did not setup.\nCall TamaraSDK().setup in main.dart';
     }

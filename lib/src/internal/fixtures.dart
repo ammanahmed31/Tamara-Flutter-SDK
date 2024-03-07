@@ -5,7 +5,7 @@ final defaultMerchantUrls = MerchantUrl(
   cancel: 'paymentStatus=canceled',
   failure: 'paymentStatus=failed',
   notification: 'paymentStatus=notification',
-  success: 'paymentStatus=success',
+  success: 'paymentStatus=approved',
 );
 
 final snippetWebUrls = <TamaraLang, String>{
